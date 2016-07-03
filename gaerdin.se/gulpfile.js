@@ -11,7 +11,7 @@ var notify      = require('gulp-notify');
 var plumber     = require('gulp-plumber');
 
 var gulpTypings = require("gulp-typings");
-var ts          = require('gulp-typescript');
+var tsc         = require('gulp-typescript');
 
 var browserify  = require('browserify');
 var source      = require('vinyl-source-stream');
@@ -19,6 +19,8 @@ var buffer      = require('vinyl-buffer');
 var sourcemaps  = require('gulp-sourcemaps');
 var batch       = require('gulp-batch');
 
+var tsProject   = tsc.createProject('./tsconfig.json');
+var tslint      = require('gulp-tslint');
 
 // Less
 //gulp.task('less', function () {
@@ -44,15 +46,23 @@ gulp.task('sass', function () {
         .pipe(notify({ onLast: true, message: 'Compiled Sass' }));
 });
 
+gulp.task('compile-ts', function () {
+    var tsResult = gulp
+    .src('./Static/src/ts/**.*.ts')
+    .pipe(sourcemaps.init({ loadMaps: true }))
+    .pipe(tsc(tsProject));
 
-var tsProject = ts.createProject('tsconfig.json');
-
-gulp.task('ts', function () {
-    var tsResult = tsProject.src('./Static/src/ts/main.ts') 
-        .pipe(ts(tsProject));
-
-    return tsResult.js.pipe(gulp.dest('./Static/js'));
+    return tsResult.js
+      .pipe(sourcemaps.write('./'))
+      .pipe(gulp.dest('./Static/src/ts/'));
 });
+
+gulp.task('lint-ts' , function () {
+    return gulp.src('./Static/src/ts/**/*.ts')
+      .pipe(tslint())
+      .pipe(tslint.report('prose', { emitError: false }));
+});
+
 
 gulp.task('scripts:ts', function () {
     // set up the browserify instance on a task basis
@@ -73,7 +83,7 @@ gulp.task('scripts:ts', function () {
 
 gulp.task("installTypings", function () {
     return gulp.src("./typings.json")
-        .pipe(gulpTypings()); //will install all typingsfiles in pipeline. 
+        .pipe(gulpTypings()); //will install all typingsfiles in pipeline.
 });
 
 // Fonts
