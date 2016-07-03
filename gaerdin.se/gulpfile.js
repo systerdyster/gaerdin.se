@@ -19,7 +19,6 @@ var buffer      = require('vinyl-buffer');
 var sourcemaps  = require('gulp-sourcemaps');
 var batch       = require('gulp-batch');
 
-var tsProject   = tsc.createProject('./tsconfig.json');
 var tslint      = require('gulp-tslint');
 
 // Less
@@ -34,48 +33,48 @@ var tslint      = require('gulp-tslint');
 //        .pipe(notify({ onLast: true, message: 'Compiled Less' }));
 //});
 
-gulp.task('sass', function () {
+gulp.task('compile:sass', function () {
     return gulp.src('./Static/src/scss/*.scss')
       .pipe(plumber({ errorHandler: notify.onError("Error: <%= error.message %>") }))
       .pipe(sourcemaps.init({ loadMaps: true }))
-        .pipe(sass())
-        .pipe(gulp.dest("./Static/css"))
-        .pipe(cleanCss())
-        .pipe(rename({ suffix: '.min' }))
-        .pipe(gulp.dest("./Static/css"))
-        .pipe(notify({ onLast: true, message: 'Compiled Sass' }));
-});
-
-gulp.task('compile-ts', function () {
-    var tsResult = gulp
-    .src('./Static/src/ts/**.*.ts')
-    .pipe(sourcemaps.init({ loadMaps: true }))
-    .pipe(tsc(tsProject));
-
-    return tsResult.js
+      .pipe(sass())
+      .pipe(gulp.dest("./Static/css"))
+      .pipe(cleanCss())
+      .pipe(rename({ suffix: '.min' }))
       .pipe(sourcemaps.write('./'))
-      .pipe(gulp.dest('./Static/src/ts/'));
+      .pipe(gulp.dest("./Static/css"))
+      .pipe(notify({ onLast: true, message: 'Compiled Sass' }));
 });
 
-gulp.task('lint-ts' , function () {
+var tsProject   = tsc.createProject('./tsconfig.json');
+
+gulp.task('compile:typescript', function (){
+    return gulp.src('./Static/src/ts/**/*.ts')
+      .pipe(sourcemaps.init({ loadMaps: true }))
+      .pipe(tsc(tsProject))
+      .pipe(sourcemaps.write('./'))
+      .pipe(gulp.dest('./Static/src/ts/'))
+      .pipe(notify({ onLast: true, message: 'Compiled Typescript' }));
+});
+
+gulp.task('lint:typescript' , function () {
     return gulp.src('./Static/src/ts/**/*.ts')
       .pipe(tslint())
       .pipe(tslint.report('prose', { emitError: false }));
 });
 
-
-gulp.task('scripts:ts', function () {
+gulp.task('bundle:js', function () {
     // set up the browserify instance on a task basis
     var b = browserify({
-        entries: './Static/js/ts/application.js',
+        entries: './Static/src/ts/main.js',
         debug: true
     });
 
     return b.bundle()
-      .pipe(source('application.min.js'))
+      .pipe(source('main.min.js'))
       .pipe(buffer())
       .pipe(sourcemaps.init({ loadMaps: true }))
-          .pipe(uglify())
+  //    .pipe(uglify())
       .pipe(sourcemaps.write('./'))
       .pipe(gulp.dest("./Static/js"))
       .pipe(notify({ onLast: true, message: 'Compiled Scripts' }));
