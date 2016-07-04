@@ -1,1 +1,0 @@
-{"version":3,"sources":["components/nav/nav.model.ts"],"names":[],"mappings":";AAAA;AAIA,CAAC;AAJY,eAAO,UAInB,CAAA","file":"components/nav/nav.model.js","sourcesContent":["export class NavItem {\r\n    id: number;\r\n    title: string;\r\n    link: string;\r\n}"],"sourceRoot":"/source/"}

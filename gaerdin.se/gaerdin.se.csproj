@@ -2904,24 +2904,23 @@
     <Content Include="Umbraco\Webservices\UltimatePickerAutoCompleteHandler.ashx" />
     <Content Include="Umbraco\Xslt\Web.config" />
     <Content Include="Static\src\scss\modules\block.scss" />
-    <Content Include="Static\src\scss\vendor\bootstrap.scss" />
-    <Content Include="Static\src\scss\vendor\font-awesome.scss" />
     <Content Include="Static\fonts\fontawesome-webfont.eot" />
     <Content Include="Static\fonts\fontawesome-webfont.ttf" />
     <Content Include="Static\fonts\fontawesome-webfont.woff" />
     <Content Include="Static\fonts\fontawesome-webfont.woff2" />
     <Content Include="Static\fonts\FontAwesome.otf" />
     <Content Include="tsconfig.json" />
-    <Content Include="typings.json" />
-    <Content Include="Static\src\typings\globals\angular-protractor\typings.json" />
-    <Content Include="Static\src\typings\globals\core-js\typings.json" />
-    <Content Include="Static\src\typings\globals\jasmine\typings.json" />
-    <Content Include="Static\src\typings\globals\node\typings.json" />
-    <Content Include="Static\src\typings\globals\selenium-webdriver\typings.json" />
     <Content Include="Static\js\main.min.js.map" />
     <Content Include="Static\src\scss\elements\body.scss" />
     <Content Include="Static\src\scss\elements\_elements.scss" />
     <Content Include="Static\src\scss\modules\_modules.scss" />
+    <Content Include="Static\src\scss\elements\nav.scss" />
+    <Content Include="Views\Partials\Nav\Nav.cshtml" />
+    <Content Include="typings.json" />
+    <Content Include="Static\src\ts\typings\globals\angular\typings.json" />
+    <Content Include="Static\src\ts\typings\globals\jquery\typings.json" />
+    <Content Include="Views\ArticlePage.cshtml" />
+    <Content Include="Views\ArchivePage.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -2959,7 +2958,10 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Business\Definitions\TabNames.cs" />
     <Compile Include="Models\DocTypes\MasterPageType.cs" />
+    <Compile Include="Models\DocTypes\ArticlePageType.cs" />
+    <Compile Include="Models\DocTypes\ArchivePageType.cs" />
     <Compile Include="Models\DocTypes\StartPageType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -2968,20 +2970,16 @@
     <Analyzer Include="..\packages\Microsoft.CodeAnalysis.Analyzers.1.0.0\analyzers\dotnet\cs\Microsoft.CodeAnalysis.CSharp.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Controllers\" />
+    <Folder Include="Models\Views\" />
     <Folder Include="Static\img\" />
-    <Folder Include="Views\Partials\" />
+    <Folder Include="Static\src\ts\components\" />
   </ItemGroup>
   <ItemGroup>
-    <TypeScriptCompile Include="Static\src\ts\components\app.component.ts" />
-    <TypeScriptCompile Include="Static\src\ts\components\menu.component.ts" />
-    <TypeScriptCompile Include="Static\src\ts\main.ts" />
-    <TypeScriptCompile Include="Static\src\ts\models\menu.model.ts" />
-    <TypeScriptCompile Include="Static\src\typings\globals\angular-protractor\index.d.ts" />
-    <TypeScriptCompile Include="Static\src\typings\globals\core-js\index.d.ts" />
-    <TypeScriptCompile Include="Static\src\typings\globals\jasmine\index.d.ts" />
-    <TypeScriptCompile Include="Static\src\typings\globals\node\index.d.ts" />
-    <TypeScriptCompile Include="Static\src\typings\globals\selenium-webdriver\index.d.ts" />
-    <TypeScriptCompile Include="Static\src\typings\index.d.ts" />
+    <TypeScriptCompile Include="Static\src\ts\application.ts" />
+    <TypeScriptCompile Include="Static\src\ts\typings\globals\angular\index.d.ts" />
+    <TypeScriptCompile Include="Static\src\ts\typings\globals\jquery\index.d.ts" />
+    <TypeScriptCompile Include="Static\src\ts\typings\index.d.ts" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />

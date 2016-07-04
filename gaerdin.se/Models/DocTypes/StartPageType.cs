@@ -1,4 +1,6 @@
-﻿using NicBell.UCreate.Attributes;
+﻿using gaerdin_se.Business.Definitions;
+using NicBell.UCreate.Attributes;
+using NicBell.UCreate.Constants;
 using Umbraco.Core.Models;
 
 namespace gaerdin_se.Models.DocTypes
@@ -13,5 +15,31 @@ namespace gaerdin_se.Models.DocTypes
         public StartPageType(IPublishedContent content) : base(content)
         {
         }
+
+        [Property(
+            Alias = "pageIntro",
+            TypeName = PropertyTypes.Textarea,
+            Description = "",
+            Mandatory = false,
+            TabName = TabNames.Content)]
+        public string PageIntro { get; set; }
+
+
+        [Property(
+            Alias = "pageBody",
+            TypeName = PropertyTypes.Richtexteditor,
+            Description = "",
+            Mandatory = false,
+            TabName = TabNames.Content)]
+        public string PageBody { get; set; }
+
+
+        [Property(
+            Alias = "blogArchive",
+            TypeName = PropertyTypes.ContentPicker,
+            Description = "",
+            Mandatory = false,
+            TabName = TabNames.Content)]
+        public string BlogArchive { get; set; }
     }
 }

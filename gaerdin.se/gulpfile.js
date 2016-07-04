@@ -4,12 +4,10 @@ var cleanCss    = require('gulp-clean-css');
 var uglify      = require('gulp-uglify');
 var rename      = require('gulp-rename');
 var gutil       = require('gutil');
-var concat      = require('gulp-concat');
 var watch       = require('gulp-watch');
 var notify      = require('gulp-notify');
 var plumber     = require('gulp-plumber');
 
-var gulpTypings = require("gulp-typings");
 var tsc         = require('gulp-typescript');
 
 var browserify  = require('browserify');
@@ -45,7 +43,7 @@ gulp.task('compile:typescript', function (){
 
 gulp.task("bundle:typescript", function () {
     var b = browserify({
-        entries: "./Static/src/ts/main.js",
+        entries: "./Static/src/ts/application.js",
         debug: true
     });
 
@@ -53,7 +51,7 @@ gulp.task("bundle:typescript", function () {
       .pipe(source("main.min.js"))
       .pipe(buffer())
       .pipe(sourcemaps.init({ loadMaps: true }))
-  //    .pipe(uglify())
+      .pipe(uglify())
       .pipe(sourcemaps.write("./"))
       .pipe(gulp.dest("./Static/js"))
       .pipe(notify({ onLast: true, message: "Compiled Scripts" }));

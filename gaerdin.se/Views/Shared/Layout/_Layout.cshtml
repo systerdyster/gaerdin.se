@@ -1,43 +1,31 @@
-﻿@inherits UmbracoTemplatePage
+﻿@inherits UmbracoTemplatePage<gaerdin_se.Models.DocTypes.MasterPageType>
 
 <!DOCTYPE html>
 
-<html lang="@Culture">
+<html lang="en-US">
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>gaerdin.se</title>
+    <title>gaerdin.se :: @Model.Content.Name</title>
 
-    <script src="node_modules/core-js/client/shim.min.js"></script>
-    <script src="node_modules/zone.js/dist/zone.js"></script>
-    <script src="node_modules/reflect-metadata/Reflect.js"></script>
-    <link rel="stylesheet" href="~/Static/css/style.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"/>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular-resource.min.js"></script>
+
+    <link rel="stylesheet" href="~/Static/css/style.min.css" />
 </head>
 <body class="">
-<header>
-    <div class="collapse">
-        <div class="bg-inverse p-a-1">
-            <h4>Collapsed content</h4>
-            <span class="text-muted">Toggleable via the navbar brand.</span>
-        </div>
-    </div>
-    <nav class="navbar navbar-light bg-faded">
-        <button class="navbar-toggler" type="button">
-            &#9776; Menu
-        </button>
-    </nav>
-</header>
-<section class="wrapper-content">
-    <div class="container">
+    <header>
+        @Html.Partial("Nav/Nav", Model)
+    </header>
+
+    <section class="content">
         @RenderBody()
-    </div>
-</section>
+    </section>
 
-<footer class="wrapper-footer">
-    <div class="container">
+    <footer></footer>
 
-    </div>
-</footer>
-
-<script type="text/javascript" src="~/Static/js/main.min.js"></script>
+    <script type="text/javascript" src="~/Static/js/main.min.js"></script>
 </body>
 </html>

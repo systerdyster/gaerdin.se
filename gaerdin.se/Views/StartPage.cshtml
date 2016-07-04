@@ -1,2 +1,10 @@
-﻿@inherits UmbracoTemplatePage<gaerdin_se.Models.DocTypes.StartPageType>
-SUPER!
+﻿@using System.Security.AccessControl
+@inherits UmbracoTemplatePage<gaerdin_se.Models.DocTypes.StartPageType>
+
+<div class="intro">
+    @Html.Raw(Model.Content.PageIntro)
+</div>
+
+<div class="body">
+   @Html.Raw(Model.Content.PageBody)
+</div>

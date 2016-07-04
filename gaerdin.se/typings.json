@@ -1,10 +1,7 @@
-﻿{
-  "resolution": "./Static/src/typings",
+{
+  "resolution": "./Static/src/ts/typings/",
   "globalDependencies": {
-    "angular-protractor": "registry:dt/angular-protractor#1.5.0+20160425143459",
-    "core-js": "registry:dt/core-js#0.0.0+20160602141332",
-    "jasmine": "registry:dt/jasmine#2.2.0+20160621224255",
-    "node": "registry:dt/node#6.0.0+20160621231320",
-    "selenium-webdriver": "registry:dt/selenium-webdriver#2.44.0+20160317120654"
+    "angular": "registry:dt/angular#1.5.0+20160627105203",
+    "jquery": "registry:dt/jquery#1.10.0+20160704162008"
   }
 }
