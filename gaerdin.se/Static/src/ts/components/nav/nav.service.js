@@ -9,15 +9,25 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 const core_1 = require('@angular/core');
-let AppComponent = class AppComponent {
+let NavService = class NavService {
+    constructor() {
+        this.links = [
+            {
+                id: 1,
+                link: "http://gaerdin.local",
+                title: "Gaerdin.local"
+            },
+            { id: 2, link: "http://www.google.com", title: "Google" }];
+    }
+    getLinks() {
+        return this.links;
+    }
+    ;
 };
-AppComponent = __decorate([
-    core_1.Component({
-        selector: 'my-app',
-        template: '<h1>My First Angular 2 App</h1>'
-    }), 
+NavService = __decorate([
+    core_1.Injectable(), 
     __metadata('design:paramtypes', [])
-], AppComponent);
-exports.AppComponent = AppComponent;
+], NavService);
+exports.NavService = NavService;
 
-//# sourceMappingURL=app.component.js.map
+//# sourceMappingURL=nav.service.js.map

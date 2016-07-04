@@ -12,13 +12,32 @@
     <script src="node_modules/reflect-metadata/Reflect.js"></script>
     <link rel="stylesheet" href="~/Static/css/style.min.css"/>
 </head>
-<body>
-<div>
+<body class="">
+<header>
+    <div class="collapse">
+        <div class="bg-inverse p-a-1">
+            <h4>Collapsed content</h4>
+            <span class="text-muted">Toggleable via the navbar brand.</span>
+        </div>
+    </div>
+    <nav class="navbar navbar-light bg-faded">
+        <button class="navbar-toggler" type="button">
+            &#9776; Menu
+        </button>
+    </nav>
+</header>
+<section class="wrapper-content">
+    <div class="container">
+        @RenderBody()
+    </div>
+</section>
 
-    @RenderBody()
+<footer class="wrapper-footer">
+    <div class="container">
 
-</div>
+    </div>
+</footer>
 
-    <script type="text/javascript" src="~/Static/js/main.min.js"></script>
+<script type="text/javascript" src="~/Static/js/main.min.js"></script>
 </body>
 </html>

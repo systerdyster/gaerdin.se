@@ -312,6 +312,7 @@
     <Content Include="Static\css\style.css" />
     <Content Include="Static\css\style.min.css" />
     <Content Include="Static\fonts\fontawesome-webfont.svg" />
+    <Content Include="Static\js\main.min.js" />
     <Content Include="Umbraco\Actions\delete.aspx" />
     <Content Include="Umbraco\Actions\editContent.aspx" />
     <Content Include="Umbraco\Actions\preview.aspx" />
@@ -2917,6 +2918,10 @@
     <Content Include="Static\src\typings\globals\jasmine\typings.json" />
     <Content Include="Static\src\typings\globals\node\typings.json" />
     <Content Include="Static\src\typings\globals\selenium-webdriver\typings.json" />
+    <Content Include="Static\js\main.min.js.map" />
+    <Content Include="Static\src\scss\elements\body.scss" />
+    <Content Include="Static\src\scss\elements\_elements.scss" />
+    <Content Include="Static\src\scss\modules\_modules.scss" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -2964,12 +2969,13 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Static\img\" />
-    <Folder Include="Static\js\" />
     <Folder Include="Views\Partials\" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Static\src\ts\components\app.component.ts" />
+    <TypeScriptCompile Include="Static\src\ts\components\menu.component.ts" />
     <TypeScriptCompile Include="Static\src\ts\main.ts" />
+    <TypeScriptCompile Include="Static\src\ts\models\menu.model.ts" />
     <TypeScriptCompile Include="Static\src\typings\globals\angular-protractor\index.d.ts" />
     <TypeScriptCompile Include="Static\src\typings\globals\core-js\index.d.ts" />
     <TypeScriptCompile Include="Static\src\typings\globals\jasmine\index.d.ts" />
